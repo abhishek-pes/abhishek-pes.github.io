@@ -1,15 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/profile.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abhishek's Porfolio</title>
-    <script type="module" crossorigin src="/assets/index-1f9b6e88.js"></script>
-    <link rel="stylesheet" href="/assets/index-aee2cf97.css">
-  </head>
-  <body>
-    <div id="root"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal Website: Abhishek Mishra,  I'm Abhishek Mishra, a computer science graduate, a full time engineer at Bosch, feel free to explore my website and blogs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles/main.css">
+</head>
+<body class="bg-primary font-mono scroll-smooth min-h-screen flex flex-col">
+    <div class="w-full bg-secondary sticky top-0 px-4 py-4 flex justify-between items-center drop-shadow-lg sm:px-8" style="z-index: 1;">
+    <a href="/">
+        <span class="font-bold text-textPrimary sm:text-2xl">Abhishek.</span>
+    </a>
+
+    <nav class="flex items-center gap-5 text-base font-medium text-textPrimary sm:text-base">
+        <a href="#about-me" class="hover:text-white">About Me </a>
+        <a href="#my-works" class="hover:text-white"> My Works </a>
+        <div class="p-1.5 bg-textPrimary text-secondary rounded-lg">
+            <a href="/blogs" class="hover:underline"> Blogs </a>
+        </div>
+    </nav>
+</div>
+    <div class="flex flex-col h-screen text-white mx-4 my-2 items-center justify-start gap-4 sm:flex-row sm:h-screen sm:justify-center">
+    <div>
+        <div class="w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-[url('/img/profile_pic.jpg')] bg-cover">
+        </div>
+        <div class="flex items-center justify-center gap-4 my-2">
+            <a href="https://github.com/abhishek-pes" target="_blank" rel="noopener noreferrer">
+                <img src="./img/github.svg" class="h-9 w-9" alt="github">
+            </a>
+            <a href="https://www.linkedin.com/in/abhishek-mishra-a12261196/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/linkedin.svg" class="h-9 w-9" alt="github">
+            </a>
+        </div>
+    </div>
+    <div>
+        <div class="flex flex-col items-center justify-center">
+            <p>Hello World, I'm</p>
+            <p class="text-4xl">Abhishek Mishra</p>
+            <p>Welcome to "my space" on the internet 🌐</p>
+
+            <div class="flex my-6 justify-center items-center gap-10">
+                <a href="https://drive.google.com/file/d/1T822C-a0sKKLbHeSPp3Ve2ZBYX8buKYG/view?usp=sharing" target="_blank" referrerpolicy="noreferrer">
+                    <button class="bg-secondary text-textPrimary border border-textPrimary p-4 rounded-lg hover:underline">View Resume</button>
+                </a>
+
+                <a href="#contact-me">
+                    <button class="bg-primary text-white p-4 rounded-lg border border-white hover:underline">Contact Me</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center my-6 -ml-2">
+        <img class="h-8 w-8 animate-bounce" src="./img/scrolldown.svg" alt="">
+        <span class="font-mono text-sm rotate-90 -m-9">scroll down</span>
+    </div>
+</div>
+
+
+
+<div id="about-me" class="flex flex-col justify-center h-screen items-center text-white">
+    <div class="flex justify-center">
+        <h1 class="text-4xl">ABOUT ME</h1>
+    </div>
+    <div class="flex flex-col p-6 text-base gap-4 hover:cursor-default">
+        <p>
+            Hello👋 and Welcome to my portfolio website! I'm Abhishek Mishra, a computer science graduate from PES
+            University.I'm a tech enthusiast and a full time engineer at
+            <span class="text-green-200 underline hover:cursor-pointer"><a href="https://www.bosch-softwaretechnologies.com/en/" target="_blank">BGSW</a></span> (with just over 6
+            months of experience)
+        </p>
+        <p>
+            When I'm not tinkering with technology, you'll likely find me on the table tennis court🏓 and pretty much
+            any other sport you can think of. I'm always up for a challenge, so if you've got a game in mind, count me
+            in!
+        </p>
+        <p>
+            Also feel free to explore this page (and my <span class="text-green-200 underline hover:cursor-pointer"><a
+                    href="/blogs">blogs</a></span> too!)
+        </p>
+    </div>
+</div>
+<div id="my-works" class="flex items-center text-white flex-col">
+    <h1 class="text-4xl">MY WORKS</h1>
+    <div class="flex flex-wrap text-white items-stretch justify-center mx-4 gap-3 rounded-r-lg">
     
-  </body>
+    
+    
+
+<div class="border rounded-md w-64 mx-4 my-6 flex justify-evenly items-center flex-col">
+        <div>
+            <h2 class="text-2xl font-semibold text-textPrimary px-2 my-4">
+                Globetrotter
+            </h2>
+        </div>
+
+        <div class="flex items-center w-full px-4 flex-wrap">
+            
+            <p class="underline mx-2 text-sm text-cyan-400">React</p>
+            
+            <p class="underline mx-2 text-sm text-cyan-400">MongoDB</p>
+            
+        </div>
+        
+        <div class="mx-2 my-4 px-2 flex items-center justify">
+            A MERN Stack web app for Connecting people with similar travel destinations and helping them collaborate.
+        </div>
+        
+        <div class="flex my-4 px-4 justify-end w-full mt-auto">
+            <a href=https://github.com/abhishek-pes/globetrotter_v1 target="_blank" rel="noopener noreferrer">
+                <button class="border border-cyan-400 px-2 py-1 rounded-md hover:bg-blue-500">Source Code</button>
+            </a>
+        </div>
+</div>
+
+    
+    
+
+<div class="border rounded-md w-64 mx-4 my-6 flex justify-evenly items-center flex-col">
+        <div>
+            <h2 class="text-2xl font-semibold text-textPrimary px-2 my-4">
+                Data Analysis on Amazon Product Listing
+            </h2>
+        </div>
+
+        <div class="flex items-center w-full px-4 flex-wrap">
+            
+            <p class="underline mx-2 text-sm text-cyan-400">Machine Learning</p>
+            
+            <p class="underline mx-2 text-sm text-cyan-400">Data Analysis</p>
+            
+            <p class="underline mx-2 text-sm text-cyan-400">Kaggle</p>
+            
+        </div>
+        
+        <div class="mx-2 my-4 px-2 flex items-center justify">
+            Created a multi-class classifier model , which will help to classify products based on the given product description.
+        </div>
+        
+        <div class="flex my-4 px-4 justify-end w-full mt-auto">
+            <a href=https://github.com/abhishek-pes/DA-Project-Amazon-product-listing target="_blank" rel="noopener noreferrer">
+                <button class="border border-cyan-400 px-2 py-1 rounded-md hover:bg-blue-500">Source Code</button>
+            </a>
+        </div>
+</div>
+
+    
+    
+
+<div class="border rounded-md w-64 mx-4 my-6 flex justify-evenly items-center flex-col">
+        <div>
+            <h2 class="text-2xl font-semibold text-textPrimary px-2 my-4">
+                Email spam classifier
+            </h2>
+        </div>
+
+        <div class="flex items-center w-full px-4 flex-wrap">
+            
+            <p class="underline mx-2 text-sm text-cyan-400">Machine Learning</p>
+            
+            <p class="underline mx-2 text-sm text-cyan-400">python</p>
+            
+            <p class="underline mx-2 text-sm text-cyan-400">pyspark</p>
+            
+        </div>
+        
+        <div class="mx-2 my-4 px-2 flex items-center justify">
+            Spam detection is a supervised machine learning problem. The data was recieved in streams, the framework used is Pyspark.
+        </div>
+        
+        <div class="flex my-4 px-4 justify-end w-full mt-auto">
+            <a href=https://github.com/abhishek-pes/Email_Spam_Classifier target="_blank" rel="noopener noreferrer">
+                <button class="border border-cyan-400 px-2 py-1 rounded-md hover:bg-blue-500">Source Code</button>
+            </a>
+        </div>
+</div>
+
+    
+    </div>
+</div>
+<div id="contact-me" class="flex flex-col justify-center h-screen items-center text-white">
+    <div class="flex justify-center">
+        <h1 class="text-4xl">CONTACT ME</h1>
+    </div>
+    <div class="flex flex-col p-6 text-base gap-4 hover:cursor-default">
+        <p>
+            Contact me by dropping a mail to : abhishek.m555.am@gmail.com
+        </p>
+        <p>
+            Will be adding a contact form very soon.
+        </p>
+    </div>
+</div>
+    <footer class="w-full flex items-center justify-center text-white px-6 py-4 mt-auto bg-secondary">
+    <small>Built with 11ty 🧑‍💻 | Made in 2024</small>
+</footer>
+</body>
 </html>
