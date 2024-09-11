@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal Website: Abhishek Mishra,  I'm Abhishek Mishra, a computer science graduate, a full time engineer at Bosch, feel free to explore my website and blogs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+    <title>Abhishek Mishra | Personal Website</title>
+    <link rel="stylesheet" href="/css/styles/main.css">
+</head>
+<body class="bg-primary font-mono">
+    <div class="sticky top-0 left-0 px-4 py-6 flex justify-start text-secondary font-semibold items-center">
+    <a href="/blogs" class="hover:scale-110">
+        <div class="flex gap-3 items-center w-12 h-12 justify-center bg-textPrimary rounded-full md:rounded-lg md:w-24">
+            <svg width="28" height="28" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.6667 7.33334H4.76L7.18 4.42667C7.29316 4.29053 7.3476 4.11501 7.33134 3.93872C7.31509 3.76244 7.22948 3.59983 7.09333 3.48667C6.95719 3.37351 6.78167 3.31907 6.60538 3.33533C6.4291 3.35158 6.26649 3.43719 6.15333 3.57334L2.82 7.57334C2.79757 7.60516 2.77752 7.63858 2.76 7.67334C2.76 7.70667 2.76 7.72667 2.71333 7.76001C2.68311 7.83645 2.66729 7.91781 2.66666 8.00001C2.66729 8.0822 2.68311 8.16357 2.71333 8.24001C2.71333 8.27334 2.71333 8.29334 2.76 8.32667C2.77752 8.36143 2.79757 8.39486 2.82 8.42667L6.15333 12.4267C6.21601 12.5019 6.29451 12.5624 6.38323 12.6039C6.47195 12.6454 6.56872 12.6668 6.66666 12.6667C6.82243 12.667 6.97339 12.6127 7.09333 12.5133C7.16084 12.4574 7.21664 12.3886 7.25754 12.3111C7.29844 12.2335 7.32364 12.1486 7.33169 12.0613C7.33974 11.974 7.33048 11.886 7.30445 11.8022C7.27843 11.7185 7.23613 11.6407 7.18 11.5733L4.76 8.66667H12.6667C12.8435 8.66667 13.013 8.59643 13.1381 8.47141C13.2631 8.34639 13.3333 8.17682 13.3333 8.00001C13.3333 7.82319 13.2631 7.65363 13.1381 7.5286C13.013 7.40358 12.8435 7.33334 12.6667 7.33334Z" fill="#121212"/>
+            </svg>
+            <span class="hidden md:block">Back</span>
+        </div>
+    </a>
+</div>
+    <div class="flex items-start justify-center max-w-full">
+        <div class="md-style"/>
+            <h1>Encapsulating UI: How to Build a Custom Toast with Web Components</h1>
+<h3>What are web Components?</h3>
+<p>Web components are a way for developers to create custom elements ( kind of like how components in react are). It is a set of web platform APIs that allows us developers to create encapsulated and reusable html components.</p>
+<p>Well these are pretty interesting and I'm going to use web components to create a custom toast 🍞 element. So let's dive in.</p>
+<h3>Implementation</h3>
+<blockquote>
+<p>Goal: To create a custom toast element , which is reusable</p>
+</blockquote>
+<p>A great thing about creating a web component is we don't need any 3rd party libraries, just plain old javascript :)</p>
+<p>The 3 main building blocks of a web component are:</p>
+<ul>
+<li>custom element</li>
+<li>shadow DOM</li>
+<li>HTML template</li>
+</ul>
+<p>Let's start by creating a <strong>custom element</strong> for the toast component. Custom elements allow me to define my own HTML tags.</p>
+<pre><code class="language-frenchToast.js">class FrenchToast extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `&lt;h3&gt;French Toast&lt;/h3&gt;`
+    }
+}
+
+window.customElements.define('french-toast',FrenchToast)
+</code></pre>
+<p>I have named my custom toast element as <code>&lt;french-toast&gt;</code> ( I couldn't come up with a better name :') sadly) and this custom element is displaying a text in a <code>&lt;h3&gt;</code> tag.</p>
+<p>Using this element in our HTML code is the same as how we use other elements.</p>
+<pre><code class="language-index.html">&lt;!DOCTYPE html&gt;
+...
+&lt;body&gt;
+    &lt;french-toast&gt;&lt;/french-toast&gt;
+    &lt;script src=&quot;./frenchToast.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Now since we have set up a basic custom element, let's add some code to make it an actual toast message.For this the <code>shadow-dom</code> and <code>html-template</code> will be useful.</p>
+<p>shadow-dom is a way to encapsulate the internal structure and styles of a web component.This avoids CSS conflicts and allows components to be styled independently.</p>
+<p>HTML templates allow me to define reusable markup that can be cloned and used inside web components.</p>
+<p>The template I have created contains a div for the toast message and a placeholder for showing an icon based on the type/category of the toast message which could be any one of the below categories:</p>
+<ul>
+<li>success</li>
+<li>warning</li>
+<li>error</li>
+<li>default</li>
+</ul>
+<p>Now, a toast message has to disappear after sometime, so to acheive this I made use of the <code>setTimeOut</code> and the <code>attributeChangedCallback</code> lifecycle event of a web component. This allows me to listen for any attribute value change in the custom element.</p>
+<pre><code class="language-js">attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'open' &amp;&amp; newValue == 'true') {
+                this.showToast();
+        }
+
+        if (name === 'placement' &amp;&amp; oldValue !== newValue) {
+            this.placement = this.getAttribute('placement')
+            this.setPlacement();
+        }
+
+        if (name === 'type' &amp;&amp; oldValue !== newValue) {
+            this.toastType = this.getAttribute('type')
+            this.setBackgroundColor();
+        }
+
+        if (name === 'duration' &amp;&amp; oldValue !== newValue) {
+            this.dismissDuration = newValue;
+        }
+
+    }
+</code></pre>
+<p>Also the duration, position and the category type of the custom toast element can easily be set as an HTML attribute.</p>
+<pre><code class="language-html">    &lt;french-toast id=&quot;toast-msg-1&quot; duration=&quot;2000&quot; open=&quot;false&quot; placement=&quot;top right&quot; type=&quot;success&quot;&gt;
+        This is a success toast message
+    &lt;/french-toast&gt;
+
+    &lt;french-toast id=&quot;toast-msg-2&quot; duration=&quot;2000&quot; open=&quot;false&quot; placement=&quot;bottom center&quot; type=&quot;warning&quot;&gt;
+        This is an warning toast message
+    &lt;/french-toast&gt;
+</code></pre>
+<p><code>I have got two toast messages one is placed at top right and another one at bottom center with a duration of 2 seconds.</code></p>
+<p><img src="/img/web_component_blog.gif" alt="final output"></p>
+<h3>Final Thoughts</h3>
+<p>Using web components to build custom UI elements gives you full control over their behavior and appearance, without the need for external libraries. This encapsulation also prevents styles and functionality from leaking into other parts of your application, making components more modular and reusable.</p>
+<p>This toast component is just the beginning—feel free to check out my  <a href="https://github.com/abhishek-pes/french-toast">Github Repository</a> for the complete code!</p>
+<p>Cheers! 😁</p>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
